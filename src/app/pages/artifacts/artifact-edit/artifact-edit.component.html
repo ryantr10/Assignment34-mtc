@@ -1,0 +1,27 @@
+<div class="edit-container">
+
+  <h2>Edit Artifact</h2>
+
+  <div *ngIf="loading">Loading artifact...</div>
+
+  <form *ngIf="!loading && artifact" (ngSubmit)="saveChanges()">
+
+    <label>Name</label>
+    <input type="text" [(ngModel)]="artifact.name" name="name" required />
+
+    <label>Description</label>
+    <textarea [(ngModel)]="artifact.description" name="description" required></textarea>
+
+    <button type="submit">Save Changes</button>
+
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  </form>
+
+  <p *ngIf="!loading && !artifact">
+    Artifact not found.
+  </p>
+
+</div>
+

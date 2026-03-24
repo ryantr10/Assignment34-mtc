@@ -1,0 +1,20 @@
+<div class="create-container">
+
+  <h2>Create New Project</h2>
+
+  <form (ngSubmit)="createProject()">
+
+    <label>Title</label>
+    <input type="text" [(ngModel)]="title" name="title" required />
+
+    <label>Description</label>
+    <textarea [(ngModel)]="description" name="description" required></textarea>
+
+    <button type="submit">Create Project</button>
+
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  </form>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="project-list-container">
+
+  <h2>Projects</h2>
+
+  <a routerLink="/projects/create" class="create-btn">+ Create New Project</a>
+
+  <div *ngIf="loading">Loading projects...</div>
+
+  <ul *ngIf="!loading && projects.length > 0">
+    <li *ngFor="let project of projects">
+      <span>{{ project.title }}</span>
+      <a [routerLink]="['/projects', project.id]">View Details</a>
+    </li>
+  </ul>
+
+  <p *ngIf="!loading && projects.length === 0">
+    No projects found.
+  </p>
+
+</div>
+
+
+
+
+

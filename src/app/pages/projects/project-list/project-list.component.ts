@@ -1,0 +1,32 @@
+import { Component, OnInit } from '@angular/core';
+import { ProjectService } from '../../../services/project.service';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-project-list',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  templateUrl: './project-list.component.html',
+  styleUrls: ['./project-list.component.css']
+})
+export class ProjectListComponent implements OnInit {
+
+  projects: any[] = [];
+  loading = true;
+
+  constructor(private projectService: ProjectService) {}
+
+  ngOnInit(): void {
+    this.projectService.getAll().subscribe({
+      next: (res: any) => {   
+        this.projects = res;
+        this.loading = false;
+      },
+      error: (err: any) => {
+        console.error(err);
+        this.loading = false;
+      }
+    });
+  }
+}

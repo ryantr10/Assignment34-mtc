@@ -1,0 +1,18 @@
+<div class="artifact-list-container">
+
+  <h2>Artifacts</h2>
+
+  <div *ngIf="loading">Loading artifacts...</div>
+
+  <ul *ngIf="!loading && artifacts.length > 0">
+    <li *ngFor="let artifact of artifacts">
+      <span>{{ artifact?.name }}</span>
+      <a [routerLink]="['/artifacts', artifact?.id]">Edit</a>
+    </li>
+  </ul>
+
+  <p *ngIf="!loading && artifacts.length === 0">
+    No artifacts found.
+  </p>
+
+</div>
